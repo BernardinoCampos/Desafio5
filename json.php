@@ -8,7 +8,7 @@
 		$ret = "";
 
 		usort($var,'cmp');
-		
+
 		foreach($var as $func)
 			$ret.= "{$func['nome']} {$func['sobrenome']},";
 
@@ -62,9 +62,9 @@
 	ksort($sobrenome);
 
 	foreach($maior as $key=>$value) {
-		echo "{$key}|MAX|".showNome($maior[$key])."|{$maior[$key][0]['salario']}\n";
-		echo "{$key}|MIN|".showNome($menor[$key])."|{$menor[$key][0]['salario']}\n";
-		echo "{$key}|AVG|".($acum[$key]/$cont[$key])."\n";
+		echo "{$key}|MAX|".showNome($maior[$key])."|".number_format($maior[$key][0]['salario'],2)."\n";
+		echo "{$key}|MIN|".showNome($menor[$key])."|".number_format($menor[$key][0]['salario'],2)."\n";
+		echo "{$key}|AVG|".number_format($acum[$key]/$cont[$key],2)."\n";
 	}
 
 	reset($numFunc);
@@ -75,5 +75,5 @@
 	foreach ($sobrenome as $key=>$value) {
 		if ($sNome[$key]==1)	continue;
 
-		echo "$key|".showNome($sobrenome[$key])."|".$value[0]['salario']."\n";
+		echo "$key|".showNome($sobrenome[$key])."|".number_format($value[0]['salario'],2)."\n";
 	}
