@@ -45,33 +45,41 @@
 	}
 
 	asort($numFunc);
-	ksort($sobrenome);
 
 	foreach($maior as $key=>$value) {
 		if ($key=='global') {
 			foreach($maior[$key] as $func)
-				echo "global_max|{$func['nome']} {$func['sobrenome']}|".$maior[$key][0]['salario']."\n";
+				echo "global_max|{$func['nome']} {$func['sobrenome']}|".number_format($maior[$key][0]['salario'],2,".","")."\n";
 			foreach($menor[$key] as $func)
-				echo "global_min|{$func['nome']} {$func['sobrenome']}|".$menor[$key][0]['salario']."\n";
-			echo "global_avg|".round($acum[$key]/$cont[$key],2)."\n";
+				echo "global_min|{$func['nome']} {$func['sobrenome']}|".number_format($menor[$key][0]['salario'],2,".","")."\n";
+			echo "global_avg|".number_format($acum[$key]/$cont[$key],2,".","")."\n";
 		}
 		else {
 			foreach($maior[$key] as $func)
-				echo "area_max|{$areas[$key]}|{$func['nome']} {$func['sobrenome']}|".$maior[$key][0]['salario']."\n";
+				echo "area_max|{$areas[$key]}|{$func['nome']} {$func['sobrenome']}|".number_format($maior[$key][0]['salario'],2,".","")."\n";
 			foreach($menor[$key] as $func)
-				echo "area_min|{$areas[$key]}|{$func['nome']} {$func['sobrenome']}|".$menor[$key][0]['salario']."\n";
-			echo "area_avg|{$areas[$key]}|".round($acum[$key]/$cont[$key],2)."\n";
+				echo "area_min|{$areas[$key]}|{$func['nome']} {$func['sobrenome']}|".number_format($menor[$key][0]['salario'],2,".","")."\n";
+			echo "area_avg|{$areas[$key]}|".number_format($acum[$key]/$cont[$key],2,".","")."\n";
 		}
 	}
 
 	reset($numFunc);
-	echo "less_employes|".$areas[key($numFunc)]."|".current($numFunc)."\n";
+	$total = current($numFunc);
+	while ($total==current($numFunc)) {
+		echo "least_employees|".$areas[key($numFunc)]."|".current($numFunc)."\n";
+		next($numFunc);
+	}
+
 	end($numFunc);
-	echo "more_employes|".$areas[key($numFunc)]."|".current($numFunc)."\n";
+	$total = current($numFunc);
+	while ($total==current($numFunc)) {
+		echo "most_employees|".$areas[key($numFunc)]."|".current($numFunc)."\n";
+		prev($numFunc);
+	}
 
 	foreach ($sobrenome as $key=>$value) {
 		if ($sNome[$key]==1)	continue;
 
 		foreach($sobrenome[$key] as $func)
-			echo "last_name_max|$key|{$func['nome']} {$func['sobrenome']}|".$value[0]['salario']."\n";
+			echo "last_name_max|$key|{$func['nome']} {$func['sobrenome']}|".number_format($value[0]['salario'],2,".","")."\n";
 	}
