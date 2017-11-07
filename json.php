@@ -1,20 +1,5 @@
 <?php
 
-	function cmp ($a, $b) {
-		return strcmp("{$a['nome']} {$a['sobrenome']}","{$b['nome']} {$b['sobrenome']}");
-	}
-
-	function showNome($var) {
-		$ret = "";
-
-		foreach($var as $func)
-			$ret.= "{$func['nome']} {$func['sobrenome']},";
-
-		$ret = trim($ret,' ,');
-
-		return $ret;
-	}
-
 	$var = json_decode(file_get_contents($argv[1], "r"),true);
 
 	$cont['global'] = 0;
@@ -64,13 +49,17 @@
 
 	foreach($maior as $key=>$value) {
 		if ($key=='global') {
-			echo "global_max|".showNome($maior[$key])."|".$maior[$key][0]['salario']."\n";
-			echo "global_min|".showNome($menor[$key])."|".$menor[$key][0]['salario']."\n";
+			foreach($maior[$key] as $func)
+				echo "global_max|{$func['nome']} {$func['sobrenome']}|".$maior[$key][0]['salario']."\n";
+			foreach($menor[$key] as $func)
+				echo "global_min|{$func['nome']} {$func['sobrenome']}|".$menor[$key][0]['salario']."\n";
 			echo "global_avg|".$acum[$key]/$cont[$key]."\n";
 		}
 		else {
-			echo "area_max|{$areas[$key]}|".showNome($maior[$key])."|".$maior[$key][0]['salario']."\n";
-			echo "area_min|{$areas[$key]}|".showNome($menor[$key])."|".$menor[$key][0]['salario']."\n";
+			foreach($maior[$key] as $func)
+				echo "area_max|{$areas[$key]}|{$func['nome']} {$func['sobrenome']}|".$maior[$key][0]['salario']."\n";
+			foreach($menor[$key] as $func)
+				echo "area_min|{$areas[$key]}|{$func['nome']} {$func['sobrenome']}|".$menor[$key][0]['salario']."\n";
 			echo "area_avg|{$areas[$key]}|".$acum[$key]/$cont[$key]."\n";
 		}
 	}
@@ -83,5 +72,6 @@
 	foreach ($sobrenome as $key=>$value) {
 		if ($sNome[$key]==1)	continue;
 
-		echo "last_name_max|$key|".showNome($sobrenome[$key])."|".$value[0]['salario']."\n";
+		foreach($sobrenome[$key] as $func)
+			echo "last_name_max|$key|{$func['nome']} {$func['sobrenome']}|".$value[0]['salario']."\n";
 	}
