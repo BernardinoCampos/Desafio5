@@ -60,17 +60,18 @@
 	}
 
 	asort($numFunc);
+	ksort($sobrenome);
 
 	foreach($maior as $key=>$value) {
 		if ($key=='global') {
-			echo "global_max|".showNome($maior[$key])."|".number_format($maior[$key][0]['salario'],2)."\n";
-			echo "global_min|".showNome($menor[$key])."|".number_format($menor[$key][0]['salario'],2)."\n";
-			echo "global_avg|".number_format($acum[$key]/$cont[$key],2)."\n";
+			echo "global_max|".showNome($maior[$key])."|".$maior[$key][0]['salario']."\n";
+			echo "global_min|".showNome($menor[$key])."|".$menor[$key][0]['salario']."\n";
+			echo "global_avg|".$acum[$key]/$cont[$key]."\n";
 		}
 		else {
-			echo "area_max|{$areas[$key]}|".showNome($maior[$key])."|".number_format($maior[$key][0]['salario'],2)."\n";
-			echo "area_min|{$areas[$key]}|".showNome($menor[$key])."|".number_format($menor[$key][0]['salario'],2)."\n";
-			echo "area_avg|{$areas[$key]}|".number_format($acum[$key]/$cont[$key],2)."\n";
+			echo "area_max|{$areas[$key]}|".showNome($maior[$key])."|".$maior[$key][0]['salario']."\n";
+			echo "area_min|{$areas[$key]}|".showNome($menor[$key])."|".$menor[$key][0]['salario']."\n";
+			echo "area_avg|{$areas[$key]}|".$acum[$key]/$cont[$key]."\n";
 		}
 	}
 
@@ -82,5 +83,5 @@
 	foreach ($sobrenome as $key=>$value) {
 		if ($sNome[$key]==1)	continue;
 
-		echo "last_name_max|$key|".showNome($sobrenome[$key])."|".number_format($value[0]['salario'],2)."\n";
+		echo "last_name_max|$key|".showNome($sobrenome[$key])."|".$value[0]['salario']."\n";
 	}
