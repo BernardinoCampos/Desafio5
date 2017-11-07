@@ -53,14 +53,14 @@
 				echo "global_max|{$func['nome']} {$func['sobrenome']}|".$maior[$key][0]['salario']."\n";
 			foreach($menor[$key] as $func)
 				echo "global_min|{$func['nome']} {$func['sobrenome']}|".$menor[$key][0]['salario']."\n";
-			echo "global_avg|".$acum[$key]/$cont[$key]."\n";
+			echo "global_avg|".round($acum[$key]/$cont[$key],2)."\n";
 		}
 		else {
 			foreach($maior[$key] as $func)
 				echo "area_max|{$areas[$key]}|{$func['nome']} {$func['sobrenome']}|".$maior[$key][0]['salario']."\n";
 			foreach($menor[$key] as $func)
 				echo "area_min|{$areas[$key]}|{$func['nome']} {$func['sobrenome']}|".$menor[$key][0]['salario']."\n";
-			echo "area_avg|{$areas[$key]}|".$acum[$key]/$cont[$key]."\n";
+			echo "area_avg|{$areas[$key]}|".round($acum[$key]/$cont[$key],2)."\n";
 		}
 	}
 
