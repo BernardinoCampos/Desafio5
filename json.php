@@ -7,8 +7,6 @@
 	function showNome($var) {
 		$ret = "";
 
-		usort($var,'cmp');
-
 		foreach($var as $func)
 			$ret.= "{$func['nome']} {$func['sobrenome']},";
 
@@ -23,6 +21,9 @@
 	$acum['global'] = 0;
 	$numFunc = [];
 	$sobrenome = [];
+
+	foreach ($var['areas'] as $value)
+			$areas[$value['codigo']] = $value['nome'];
 
 	foreach($var['funcionarios'] as $func) {
 		if (!IsSet($maior['global']) || $func['salario'] > $maior['global'][0]['salario'])
@@ -59,21 +60,27 @@
 	}
 
 	asort($numFunc);
-	ksort($sobrenome);
 
 	foreach($maior as $key=>$value) {
-		echo "{$key}|MAX|".showNome($maior[$key])."|".number_format($maior[$key][0]['salario'],2)."\n";
-		echo "{$key}|MIN|".showNome($menor[$key])."|".number_format($menor[$key][0]['salario'],2)."\n";
-		echo "{$key}|AVG|".number_format($acum[$key]/$cont[$key],2)."\n";
+		if ($key=='global') {
+			echo "global_max|".showNome($maior[$key])."|".number_format($maior[$key][0]['salario'],2)."\n";
+			echo "global_min|".showNome($menor[$key])."|".number_format($menor[$key][0]['salario'],2)."\n";
+			echo "global_avg|".number_format($acum[$key]/$cont[$key],2)."\n";
+		}
+		else {
+			echo "area_max|{$areas[$key]}|".showNome($maior[$key])."|".number_format($maior[$key][0]['salario'],2)."\n";
+			echo "area_min|{$areas[$key]}|".showNome($menor[$key])."|".number_format($menor[$key][0]['salario'],2)."\n";
+			echo "area_avg|{$areas[$key]}|".number_format($acum[$key]/$cont[$key],2)."\n";
+		}
 	}
 
 	reset($numFunc);
-	echo "LESS_WORKERS|".key($numFunc)."|".current($numFunc)."\n";
+	echo "less_employes|".$areas[key($numFunc)]."|".current($numFunc)."\n";
 	end($numFunc);
-	echo "MORE_WORKERS|".key($numFunc)."|".current($numFunc)."\n";
+	echo "more_employes|".$areas[key($numFunc)]."|".current($numFunc)."\n";
 
 	foreach ($sobrenome as $key=>$value) {
 		if ($sNome[$key]==1)	continue;
 
-		echo "$key|".showNome($sobrenome[$key])."|".number_format($value[0]['salario'],2)."\n";
+		echo "last_name_max|$key|".showNome($sobrenome[$key])."|".number_format($value[0]['salario'],2)."\n";
 	}
