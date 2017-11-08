@@ -30,7 +30,7 @@ function geraJson($nome, &$funcionarios, &$areas) {
 			$first=False;
 		else
 			fwrite($fd,',');
-		fwrite($fd,"{".randNewline().'"nome":"'.$func['nome'].'",'.randNewline().'"sobrenome":"'.$func['sobrenome'].'",'.randNewline().'"salario":"'.$func['salario'].'",'.randNewline().'"area":"'.$func['area'].'"'.randNewline().'}');
+		fwrite($fd,"{".randNewline().'"id":"'.$func['id'].'",'.randNewline().'"nome":"'.$func['nome'].'",'.randNewline().'"sobrenome":"'.$func['sobrenome'].'",'.randNewline().'"salario":'.$func['salario'].','.randNewline().'"area":"'.$func['area'].'"'.randNewline().'}');
 	}
 	fwrite($fd,"],\"areas\":[\n");
 	$first=true;
