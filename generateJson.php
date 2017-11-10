@@ -1,5 +1,7 @@
 <?php
 
+$inicio = microtime(True);
+
 function formataSegundos($seg) {
 	$locale_info = localeconv();
 
@@ -21,33 +23,58 @@ function randNewline() {
 		return "\n";
 }
 
-function geraJson($nome, &$funcionarios, &$areas) {
-	$fd = popen("/usr/bin/p7zip > $nome.7z","w");
-	fwrite($fd,"{\"funcionarios\":[\n");
-	$first=true;
-	foreach($funcionarios as $func) {
-		if ($first)
-			$first=False;
-		else
-			fwrite($fd,',');
-		fwrite($fd,"{".randNewline().'"id":'.$func['id'].','.randNewline().'"nome":"'.$func['nome'].'",'.randNewline().'"sobrenome":"'.$func['sobrenome'].'",'.randNewline().'"salario":'.$func['salario'].','.randNewline().'"area":"'.$func['area'].'"'.randNewline().'}');
-	}
-	fwrite($fd,"],\"areas\":[\n");
+function openJson($key,&$array) {
+	$nome = "Funcionarios-{$key}.json";
+	$array['fd'] = popen("/usr/bin/p7zip > $nome.7z","w");
+	fwrite($array['fd'],"{\"funcionarios\":[\n");
+}
+
+function closeJson($key,&$array,&$areas) {
+	GLOBAL $inicio;
+
+	if ($array['fd']==NULL)
+		return;
+
+	$nome = "Funcionarios-{$key}.json";
+
+	fwrite($array['fd'],"],\n\"areas\":[\n");
 	$first=true;
 	foreach($areas as $area) {
 		if ($first)
 			$first=False;
 		else
-			fwrite($fd,',');
-		fwrite($fd,"{".randNewline().'"codigo":"'.$area['codigo'].'",'.randNewline().'"nome":"'.$area['nome'].'"'.randNewline().'}');
+			fwrite($array['fd'],",\n");
+		fwrite($array['fd'],"{\"codigo\":\"{$area['codigo']}\",\"nome\":\"{$area['nome']}\"}");
 	}
-	fwrite($fd,']}');
+	fwrite($array['fd'],"]}");
+	fclose($array['fd']);
+	$array['fd']=NULL;
+
+	echo "{$array['size']} ".number_format((microtime(True)-$inicio),4,".","")."\n";
 }
 
-$inicio = microtime(True);
+function saveJson($arquivos, $funcionarios, &$first) {
+	$str = "";
+	foreach($funcionarios as $func) {
+		if ($first)
+			$first=False;
+		else
+			$str.=',';
+		$str.= "{".randNewline().'"id":'.$func['id'].','.randNewline().'"nome":"'.$func['nome'].'",'.randNewline().'"sobrenome":"'.$func['sobrenome'].'",'.randNewline().'"salario":'.$func['salario'].','.randNewline().'"area":"'.$func['area'].'"'.randNewline().'}';
+	}
+	foreach($arquivos as $arq)
+		if ($arq['fd']!=NULL)
+			fwrite($arq['fd'],$str);
+}
 
 $areas = [
+			["codigo"=>"A1","nome"=>"Área 1"],
+			["codigo"=>"A2","nome"=>"Área 2"],
+			["codigo"=>"A3","nome"=>"Área 3"],
 			["codigo"=>"CC","nome"=>"Controladoria Central"],
+			["codigo"=>"D1","nome"=>"Departamento 1"],
+			["codigo"=>"D2","nome"=>"Departamento 2"],
+			["codigo"=>"D3","nome"=>"Departamento 3"],
 			["codigo"=>"DC","nome"=>"Departamento Comercial"],
 			["codigo"=>"DJ","nome"=>"Departamento Jurídico"],
 			["codigo"=>"ES","nome"=>"Engenharia Social"],
@@ -66,21 +93,48 @@ $areas = [
 			["codigo"=>"DS","nome"=>"Desenvolvimento de Software"],
 			["codigo"=>"GS","nome"=>"Gerenciamento de Software"],
 			["codigo"=>"UD","nome"=>"Designer de UI/UX"]
-		];
+];
 
-	$firstNames = explode("\n",file_get_contents("FirstNames.txt", 'r'));
-	$lastNames  = explode("\n",file_get_contents("LastNames.txt", 'r'));
+$firstNames = explode("\n",file_get_contents("FirstNames.txt", 'r'));
+$lastNames  = explode("\n",file_get_contents("LastNames.txt", 'r'));
 
-	$aa=0;
-	$fatores = ["10K"=>10000,"50K"=>50000,"100K"=>100000,"250K"=>250000,"500K"=>500000,"1M"=>1000000,"2M"=>2000000,"3M"=>3000000,"5M"=>5000000,"8M"=>8000000,"12M"=>12000000,"15M"=>15000000,"20M"=>20000000,"25M"=>25000000,"30M"=>30000000];
-	foreach($firstNames as $nome)
-		foreach ($lastNames as $sobrenome) {
-			$funcionarios[] = ['id'=>$aa,'nome'=>$nome, 'sobrenome'=>$sobrenome, 'salario'=>number_format(mt_rand(100,10000000)/100,2,".",""), 'area'=>$areas[mt_rand(1,18)]['codigo']];
+$arquivos = [
+				"10K"=>['fd'=>NULL,'size'=>10000],
+				"50K"=>['fd'=>NULL,'size'=>50000],
+				"100K"=>['fd'=>NULL,'size'=>100000],
+				"250K"=>['fd'=>NULL,'size'=>250000],
+				"500K"=>['fd'=>NULL,'size'=>500000],
+				"1M"=>['fd'=>NULL,'size'=>1000000],
+				"2M"=>['fd'=>NULL,'size'=>2000000],
+				"3M"=>['fd'=>NULL,'size'=>3000000],
+				"5M"=>['fd'=>NULL,'size'=>5000000],
+				"8M"=>['fd'=>NULL,'size'=>8000000],
+				"12M"=>['fd'=>NULL,'size'=>12000000],
+				"15M"=>['fd'=>NULL,'size'=>15000000],
+				"20M"=>['fd'=>NULL,'size'=>20000000],
+				"25M"=>['fd'=>NULL,'size'=>25000000],
+				"30M"=>['fd'=>NULL,'size'=>30000000]
+			];
 
-			if ($key=array_search($aa,$fatores)) {
-				geraJson("Funcionarios-$key.json",$funcionarios,$areas);
-				echo "Gerado Funcionarios-$key.json em ".Trim(formataSegundos(microtime(True)-$inicio))."\n";
-			}
+foreach($arquivos as $key=>$arr)
+	openJson($key,$arquivos[$key]);
 
-			$aa++;
+$aa=0;
+$first = true;
+foreach($firstNames as $nome)
+	foreach ($lastNames as $sobrenome) {
+		if ($aa%13)
+			$funcionarios[$aa++] = ['id'=>$aa,'nome'=>$nome, 'sobrenome'=>$sobrenome, 'salario'=>number_format(mt_rand(100,10000000)/100,2,".",""), 'area'=>$areas[0]['codigo']];
+		else if (($aa+1)%13)
+			$funcionarios[$aa++] = ['id'=>$aa,'nome'=>$nome, 'sobrenome'=>$sobrenome, 'salario'=>number_format(mt_rand(100,10000000)/100,2,".",""), 'area'=>$areas[1]['codigo']];
+		else
+			$funcionarios[$aa++] = ['id'=>$aa,'nome'=>$nome, 'sobrenome'=>$sobrenome, 'salario'=>number_format(mt_rand(100,10000000)/100,2,".",""), 'area'=>$areas[mt_rand(2,24)]['codigo']];
+
+		if ($aa%1000==0) {
+			saveJson($arquivos, $funcionarios, $first);
+			foreach($arquivos as $key=>$arr)
+				if ($aa>=$arr['size'])
+					closeJson($key,$arquivos[$key],$areas);
+			$funcionarios = [];
 		}
+	}
