@@ -19,7 +19,16 @@ $tamanhos = [
 			'30M'=> ['Hash'=>'1c0e814e642c5fd58a2ee3dcd8c9e807','Size'=>30000000]
 			];
 
-$solucoes = ['php'=>'/usr/bin/php json.php', 'rust'=>'./desafio_Rust', 'c'=>'./desafio_C'];
+$numExecucoes = 10;
+
+$solucoes['c']='./desafio_C';
+$solucoes['go-concurrency']='./go4';
+$solucoes['go']='./desafio_Go';
+$solucoes['java-Gson']='/usr/bin/java -jar op-d05-java-all-0.1.jar';
+$solucoes['java-Jackson']='/usr/bin/java -jar op-d05-java-all-0.3.jar';
+$solucoes['php']='/usr/bin/php json.php'; 
+//$solucoes['python']='python3 json.py';
+$solucoes['rust']='./desafio_Rust';
 
 $tempos = [];
 foreach ($tamanhos as $tam=>$v) {
@@ -27,7 +36,7 @@ foreach ($tamanhos as $tam=>$v) {
 
 	copy ("{$arquivo}","./HD/{$arquivo}") or die('Não foi possível copiar o arquivo\n');
 
-	for($aa=0;$aa<3;$aa++)
+	for($aa=0;$aa<$numExecucoes;$aa++)
 		foreach ($solucoes as $key => $value) {
 			echo "Processando ($aa) $key [$tam] - ";
 			$cmd = $value." {$arquivo} | /usr/bin/sort | /usr/bin/md5sum";
