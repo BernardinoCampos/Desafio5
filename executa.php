@@ -39,6 +39,7 @@ foreach ($tamanhos as $tam=>$v) {
 	for($aa=0;$aa<$numExecucoes;$aa++)
 		foreach ($solucoes as $key => $value) {
 			echo "Processando ($aa) $key [$tam] - ";
+			system('echo 3 > /proc/sys/vm/drop_cache; sync');
 			$cmd = $value." {$arquivo} | /usr/bin/sort | /usr/bin/md5sum";
 			$fd = popen($value." ./HD/{$arquivo} | /usr/bin/sort | /usr/bin/md5sum", 'r');
 			$inicio = microtime(True);
