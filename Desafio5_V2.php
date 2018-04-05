@@ -5,7 +5,7 @@
 		Global $areas;
 
 		if(!file_exists($filename))
-        	die("Arquivo!");
+        		die("Arquivo!");
 
 		$string = file_get_contents($filename);
 
