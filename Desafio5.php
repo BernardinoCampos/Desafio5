@@ -1,5 +1,9 @@
 <?php
 
+	ini_set('error_reporting', 0);
+	ini_set('memory_limit', -1);
+	ini_set('zend.enable_gc', 0);
+
 	$var = json_decode(file_get_contents($argv[1], "r"),true);
 
 	$cont['global'] = 0;
@@ -8,40 +12,47 @@
 	$sobrenome = [];
 
 	foreach ($var['areas'] as $value)
-			$areas[$value['codigo']] = $value['nome'];
+		$areas[$value['codigo']] = $value['nome'];
+
+	$menor['global'][0]['salario']=99999999;
 
 	foreach($var['funcionarios'] as $func) {
-		if (!IsSet($maior['global']) || $func['salario'] > $maior['global'][0]['salario'])
+
+		$salario = (float) $func['salario'];
+		$area = $func['area'];
+		$sname = $func['sobrenome'];
+
+		if ($salario > $maior['global'][0]['salario'])
 			$maior['global']=[$func];
- 		else if ($func['salario'] == $maior['global'][0]['salario'])
+ 		else if ($salario == $maior['global'][0]['salario'])
 			$maior['global'][]=$func;
 
-		if (!IsSet($menor['global']) || $func['salario'] < $menor['global'][0]['salario'])
+		if ($salario < $menor['global'][0]['salario'])
 			$menor['global']=[$func];
-		else if ($func['salario'] == $menor['global'][0]['salario'])
+		else if ($salario == $menor['global'][0]['salario'])
 			$menor['global'][]=$func;
 
-		if (!IsSet($maior[$func['area']]) || $func['salario'] > $maior[$func['area']][0]['salario'])
-			$maior[$func['area']]=[$func];
- 		else if ($func['salario'] == $maior[$func['area']][0]['salario'])
-			$maior[$func['area']][]=$func;
+		if ($salario > $maior[$area][0]['salario'])
+			$maior[$area]=[$func];
+ 		else if ($salario == $maior[$area][0]['salario'])
+			$maior[$area][]=$func;
 
-		if (!IsSet($menor[$func['area']]) || $func['salario'] < $menor[$func['area']][0]['salario'])
-			$menor[$func['area']]=[$func];
-		else if ($func['salario'] == $menor[$func['area']][0]['salario'])
-			$menor[$func['area']][]=$func;
+		if (!IsSet($menor[$area]) || $salario < $menor[$area][0]['salario'])
+			$menor[$area]=[$func];
+		else if ($salario == $menor[$area][0]['salario'])
+			$menor[$area][]=$func;
 
-		if (!IsSet($sobrenome[$func['sobrenome']]) || $func['salario'] > $sobrenome[$func['sobrenome']][0]['salario'] )
-			$sobrenome[$func['sobrenome']] = [$func];
-		else if ($func['salario'] == $sobrenome[$func['sobrenome']][0]['salario'])
-			$sobrenome[$func['sobrenome']][] = $func;
+		if ($salario > $sobrenome[$sname][0]['salario'] )
+			$sobrenome[$sname] = [$func];
+		else if ($salario == $sobrenome[$sname][0]['salario'])
+			$sobrenome[$sname][] = $func;
 
-		@$acum['global']+=$func['salario'];
+		@$acum['global']+=$salario;
 		@$cont['global']++;
-		@$acum[$func['area']]+=$func['salario'];
-		@$cont[$func['area']]++;
-		@$numFunc[$func['area']]++;
-		@$sNome[$func['sobrenome']]++;
+		@$acum[$area]+=$salario;
+		@$cont[$area]++;
+		@$numFunc[$area]++;
+		@$sNome[$sname]++;
 	}
 
 	asort($numFunc);
