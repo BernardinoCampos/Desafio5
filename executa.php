@@ -1,70 +1,129 @@
 #!/usr/bin/php
 <?php
 
-$tamanhos = [
-			'10K'=> ['Hash'=>'967eb7059d62e6d430d67eeb16e45e44','Size'=>10000],
-			'50K'=> ['Hash'=>'1c25b8e3d52ff9ae5ec9883570c49d59','Size'=>50000],
-			'100K'=>['Hash'=>'fc4caf6d53d265453d62da0983bb3fb5','Size'=>100000],
-			'250K'=>['Hash'=>'6e41f0316ee66d9266c1e5d32891b3bf','Size'=>250000],
-			'500K'=>['Hash'=>'98fecdfd321a5cd966eefbb9f8b31785','Size'=>500000],
-			'1M'=>  ['Hash'=>'b9012db943149e069920bf7c3ec49984','Size'=>1000000],
-			'2M'=>  ['Hash'=>'483cc5423f6502a84c4ec9adc0ce8cbb','Size'=>2000000],
-			'3M'=>  ['Hash'=>'93912b5d0ffeccc86db7d596f0078115','Size'=>3000000],
-			'5M'=>  ['Hash'=>'92d5d4b4dd1bf5c965f79053145ae0f2','Size'=>5000000],
-			'8M'=>  ['Hash'=>'50801387d4d06ed42043ca2325a01122','Size'=>8000000],
-			'12M'=> ['Hash'=>'cddb5d244bca76b71e5ee7db95e022e8','Size'=>12000000],
-			'15M'=> ['Hash'=>'acd7306f4ef82721bc301f488dd59d60','Size'=>15000000],
-			'20M'=> ['Hash'=>'66d8426057595b172e7a50be8ce65db7','Size'=>20000000],
-			'25M'=> ['Hash'=>'8aa026b23a51940347335f5b22d0177b','Size'=>25000000],
-			'30M'=> ['Hash'=>'1c0e814e642c5fd58a2ee3dcd8c9e807','Size'=>30000000]
-			];
+$conf = json_decode(file_get_contents('./ftp.conf'),TRUE);
 
-$numExecucoes = 10;
+function putFtpArray(array $arr,string $nome) {
+	Global $conf;
 
-$solucoes['c']='./desafio_C';
-$solucoes['go-concurrency']='./go4';
-$solucoes['go']='./desafio_Go';
-$solucoes['java-Gson']='/usr/bin/java -jar op-d05-java-all-0.1.jar';
-$solucoes['java-Jackson']='/usr/bin/java -jar op-d05-java-all-0.3.jar';
-$solucoes['php']='/usr/bin/php json.php'; 
-//$solucoes['python']='python3 json.py';
-$solucoes['rust']='./desafio_Rust';
+	$filename = "/var/tmp/{$nome}";
+
+	file_put_contents($filename, json_encode($arr));
+
+	$fd = ftp_connect($conf['host']);
+	$lg = ftp_login($fd, $conf['user'], $conf['passwd']);
+	ftp_pasv($fd, false	);
+	ftp_put($fd, $nome, $filename, FTP_BINARY);
+	ftp_close($fd);
+	unlink($filename);
+}
+
+function getFtpArray(string $nome) : array {
+	Global $conf;
+
+	$filename = "/var/tmp/{$nome}";
+
+	$fd = ftp_connect($conf['host']);
+	$lg = ftp_login($fd, $conf['user'], $conf['passwd']);
+	ftp_pasv($fd, false	);
+	ftp_get($fd, $filename, $nome, FTP_BINARY);
+	ftp_close($fd);
+
+	$var = json_decode(file_get_contents($filename),TRUE);
+	unlink($filename);
+
+	return $var;
+}
+
+function sd_square($x, $mean) { return pow($x - $mean,2); }
+
+function stddev(array $array) {
+    return sqrt(array_sum(array_map("sd_square", $array, array_fill(0,count($array), (array_sum($array) / count($array)) ) ) ) / (count($array)-1) );
+}
+
+$tamanhos['10K'] = ['Hash'=>'967eb7059d62e6d430d67eeb16e45e44','Size'=>10000];
+$tamanhos['50K'] = ['Hash'=>'1c25b8e3d52ff9ae5ec9883570c49d59','Size'=>50000];
+$tamanhos['100K']= ['Hash'=>'fc4caf6d53d265453d62da0983bb3fb5','Size'=>100000];
+$tamanhos['250K']= ['Hash'=>'6e41f0316ee66d9266c1e5d32891b3bf','Size'=>250000];
+$tamanhos['500K']= ['Hash'=>'98fecdfd321a5cd966eefbb9f8b31785','Size'=>500000];
+$tamanhos['1M']  = ['Hash'=>'b9012db943149e069920bf7c3ec49984','Size'=>1000000];
+$tamanhos['2M']  = ['Hash'=>'483cc5423f6502a84c4ec9adc0ce8cbb','Size'=>2000000];
+$tamanhos['3M']  = ['Hash'=>'93912b5d0ffeccc86db7d596f0078115','Size'=>3000000];
+$tamanhos['5M']  = ['Hash'=>'92d5d4b4dd1bf5c965f79053145ae0f2','Size'=>5000000];
+$tamanhos['8M']  = ['Hash'=>'50801387d4d06ed42043ca2325a01122','Size'=>8000000];
+$tamanhos['12M'] = ['Hash'=>'cddb5d244bca76b71e5ee7db95e022e8','Size'=>12000000];
+$tamanhos['15M'] = ['Hash'=>'acd7306f4ef82721bc301f488dd59d60','Size'=>15000000];
+$tamanhos['20M'] = ['Hash'=>'66d8426057595b172e7a50be8ce65db7','Size'=>20000000];
+$tamanhos['25M'] = ['Hash'=>'8aa026b23a51940347335f5b22d0177b','Size'=>25000000];
+$tamanhos['30M'] = ['Hash'=>'1c0e814e642c5fd58a2ee3dcd8c9e807','Size'=>30000000];
+
+#$solucoes ['Go-SergioCorreia'] 	= ['exec'=>'./Go-SergioCorreia','language'=>'Go','creator'=>'Sérgio Correia','source'=>'https://github.com/OsProgramadores/op-desafios/blob/master/desafio-05/qrwteyrutiyoup/go'];
+#$solucoes ['C-SergioCorreia']		= ['exec'=>'./C-SergioCorreia','language'=>'C','creator'=>'Sérgio Correia','source'=>'https://github.com/OsProgramadores/op-desafios/blob/master/desafio-05/qrwteyrutiyoup/c'];
+#$solucoes ['Go-MarcoPaganini'] 	= ['exec'=>'./Go-MarcoPaganini','language'=>'Go','creator'=>'Marco Paganini','source'=>'https://github.com/OsProgramadores/op-desafios/tree/master/desafio-05/marcopaganini'];
+$solucoes ['Php-Bcampos']				= ['exec'=>'/usr/bin/php Php-Bcampos.php','language'=>'Php','creator'=>'Bernardino Campos','source'=>'https://github.com/BernardinoCampos/Desafio5/blob/master/Desafio5.php'];
+#$solucoes ['Php-Mockba']				= ['exec'=>'/usr/bin/php Php-Mockba.php','language'=>'Php','creator'=>'Mockba - The Borg','source'=>'https://github.com/BernardinoCampos/Desafio5/blob/master/Desafio5_V4.php'];
+#$solucoes ['Java-MarcoAntonio']	= ['exec'=>'/usr/bin/java -jar Java-MarcoAntonio.jar','language'=>'Java','creator'=>'Marco Antônio','source'=>'https://github.com/mrcrch/op-d05-java/tree/jsoniter2'];
+#$solucoes ['Python-Demetrescu']	= ['exec'=>'/usr/bin/python3 Python-Demetrescu.py','language'=>'Python','creator'=>'Roger Demetrescu','source'=>''];
+#$solucoes ['Python-LuizLima'] 	= ['exec'=>'/usr/bin/python3 Python-LuizLima.py','language'=>'Python','creator'=>'Luiz Lima','source'=>''];
+#$solucoes ['Python-CarlosAugusto'] = ['exec'=>'/usr/bin/python Python-CarlosAugusto.py < ','language'=>'Python','creator'=>'Carlos Augusto','source'=>'https://github.com/engaugusto/desafio_5_python/blob/master/main.py'];
+#$solucoes ['Rust-AndreGarzia'] 	= ['exec'=>'./Rust-AndreGarzia','language'=>'Rust','creator'=>'André Garzia','source'=>'https://bitbucket.org/andregarzia/desafio-5-rust'];
+
+#$numExecucoes = 10;
+$numExecucoes = 5;
+
+foreach ($solucoes as $key => $value)
+	@unlink($key.".dat");
 
 $tempos = [];
+
+putenv ( 'GOGC=off' );
+
+@system("rm -f ./HD/*");
+
+if (!file_exists('/sys/fs/cgroup/memory/OsProgramadores')) {
+	@system ('/usr/bin/cgcreate -g memory:/OsProgramadores');
+	@system ('echo $(( 28 * 1073741824 )) > /sys/fs/cgroup/memory/OsProgramadores/memory.limit_in_bytes');
+	@system ('echo $(( 28 * 1073741824 )) > /sys/fs/cgroup/memory/OsProgramadores/memory.memsw.limit_in_bytes');
+}
+
 foreach ($tamanhos as $tam=>$v) {
 	$arquivo = "Funcionarios-{$tam}.json";
 
-	copy ("{$arquivo}","./HD/{$arquivo}") or die('Não foi possível copiar o arquivo\n');
+	copy ("./Arquivos/{$arquivo}","./HD/{$arquivo}") or die('Não foi possível copiar o arquivo\n');
+	@system("sync");
 
 	for($aa=0;$aa<$numExecucoes;$aa++)
-		foreach ($solucoes as $key => $value) {
+		foreach ($solucoes as $key => $vector) {
 			echo "Processando ($aa) $key [$tam] - ";
-			system('echo 3 > /proc/sys/vm/drop_cache; sync');
-			$cmd = $value." {$arquivo} | /usr/bin/sort | /usr/bin/md5sum";
-			$fd = popen($value." ./HD/{$arquivo} | /usr/bin/sort | /usr/bin/md5sum", 'r');
+			system('sync; echo 3 > /proc/sys/vm/drop_caches');
+			$cmd = "/usr/bin/cgexec -g memory:OsProgramadores {$vector['exec']} ./HD/{$arquivo} | /usr/bin/sort | /usr/bin/md5sum";
+			$fd = popen($cmd, 'r');
 			$inicio = microtime(True);
 			fscanf($fd,"%s %s",$hash,$lixo);
 			pclose($fd);
 			$total = microtime(True)-$inicio;
 
-			echo "Tempo {$total} \n";
+			echo "Tempo {$total}\n";
 
 			if ($hash!=$v['Hash']) {
 				echo "Hash de $key falhou em $tam\n";
 				$otal=0;
 			}
 
-			$tempos[$key][$tam]['tempo'][]=$total;
-			$tempos[$key][$tam]['hash'][]=$hash;
+			$tempos[$key][$tam][]=$total;
 		}
-	unlink("./HD/{$arquivo}");
+	@unlink("./HD/{$arquivo}");
  }
 
-foreach($tempos as $solucao=>$a) {
-	$fd = fopen("{$solucao}.dat","a");
-	foreach($a as $tam=>$b) {
-		$media=array_sum($b['tempo'])/Count($b['tempo']);
-		fwrite($fd,"{$tamanhos[$tam]['Size']} {$media}\n");
-	}
-	fclose($fd);
-}
+$resultados = getFtpArray('resultados.json');
+
+foreach($tempos as $solucao=>$a)
+	foreach($a as $tam=>$b)
+		$resultados[$solucao][$tam]=['media'=>array_sum($b)/Count($b), 'stdDev'=>stddev($b), 'stdError'=>(stddev($b)/sqrt(Count($b))), 'tempos'=>$b, 'Size'=>$tamanhos[$tam]['Size']];
+
+foreach (getFtpArray('solucoes.json') as $key=>$sol)
+	if (!isSet($solucoes[$key]))
+		$solucoes[$key] = $sol;
+
+putFtpArray($solucoes,'solucoes.json');
+putFtpArray($resultados,'resultados.json');
