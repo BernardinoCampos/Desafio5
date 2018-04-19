@@ -9,11 +9,17 @@
 
 	function sortFunc($a, $b) {
 		GLOBAL $resultados;
-		$item1 = (float)$resultados[$a]['12M']['media'];
-		$item2 = (float)$resultados[$b]['12M']['media'];
+		$item1 = (float)$resultados[$a]['30M']['media'];
+		$item2 = (float)$resultados[$b]['30M']['media'];
 
 		if ($item1==$item2)
 			return 0;
+
+		if ($item1==0)
+			return 1;
+
+		if ($item2==0)
+			return 1;
 
 		return ( ($item1>$item2)?1:-1 );
 	}
@@ -39,23 +45,56 @@
 				<div class="col-lg-6">
 					<table class="table">
 						<thead  class="thead-dark">
-							<tr><th>Solução</th><th>Linguagem</th><th>Criador</th><th>Source</th><th>Média para 30M</th></tr>
+							<tr><th>Solução</th><th class='text-center'>Linguagem</th><th class='text-center'>Criador</th><th>Source</th><th>Média para 30M</th></tr>
 						</thead>
 						<tbody>
 							<?foreach ($solucoes as $key=>$solution) : ?>
 								<tr>
 									<td><?=$key?></td>
-									<td><?=$solution['language']?></td>
-									<td><?=$solution['creator']?></td>
+									<td class='text-center'><?=$solution['language']?></td>
+									<td class='text-center'><?=$solution['creator']?></td>
 									<? if (IsSet($solution['source'])) : ?>
 										<td><a href='<?=$solution['source']?>'>Source</a></td>
 									<? else : ?>
 										<td> - </td>
 									<? endif; ?>
-									<td><?=$resultados[$key]['30M']['media']?></td>
+									<? if ($resultados[$key]['30M']['media']!=0) : ?>
+										<td class='text-right'><?=number_format($resultados[$key]['30M']['media'],2)?>s</td>
+									<? else : ?>
+										<td class='text-right'> - </td>
+									<? endif; ?>
 								</tr>
 							<?endforeach;?>
 						</tbody>
+					</table>
+				</div>
+				<div class="col-lg-3">
+				</div>
+			</div>
+			<div class="row mt-5 mb-5">
+				<div class="col-lg-3">
+				</div>
+				<div class="col-lg-6">
+					<table class="table">
+						<thead class="thead-dark">
+							<tr><th>Arquivos de Teste</th><th>MD5 Resultado</th></tr>
+						</thead>
+						<tbody>
+						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-10K.json.7z'>10K Registros</a></td><td>967eb7059d62e6d430d67eeb16e45e44</td></tr>
+						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-50K.json.7z'>50K Registros</a></td><td>1c25b8e3d52ff9ae5ec9883570c49d59</td></tr>
+						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-100K.json.7z'>100K Registros</a></td><td>fc4caf6d53d265453d62da0983bb3fb5</td></tr>
+						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-250K.json.7z'>250K Registros</a></td><td>6e41f0316ee66d9266c1e5d32891b3bf</td></tr>
+						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-500K.json.7z'>500K Registros</a></td><td>98fecdfd321a5cd966eefbb9f8b31785</td></tr>
+						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-1M.json.7z'>1M Registros</a></td><td>b9012db943149e069920bf7c3ec49984</td></tr>
+						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-2M.json.7z'>2M Registros</a></td><td>483cc5423f6502a84c4ec9adc0ce8cbb</td></tr>
+						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-3M.json.7z'>3M Registros</a></td><td>93912b5d0ffeccc86db7d596f0078115</td></tr>
+						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-5M.json.7z'>5M Registros</a></td><td>92d5d4b4dd1bf5c965f79053145ae0f2</td></tr>
+						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-8M.json.7z'>8M Registros</a></td><td>50801387d4d06ed42043ca2325a01122</td></tr>
+						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-12M.json.7z'>12M Registros</a></td><td>cddb5d244bca76b71e5ee7db95e022e8</td></tr>
+						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-15M.json.7z'>15M Registros</a></td><td>acd7306f4ef82721bc301f488dd59d60</td></tr>
+						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-20M.json.7z'>20M Registros</a></td><td>66d8426057595b172e7a50be8ce65db7</td></tr>
+						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-25M.json.7z'>25M Registros</a></td><td>8aa026b23a51940347335f5b22d0177b</td></tr>
+						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-30M.json.7z'>30M Registros</a></td><td>1c0e814e642c5fd58a2ee3dcd8c9e807</td></tr>
 					</table>
 				</div>
 				<div class="col-lg-3">
