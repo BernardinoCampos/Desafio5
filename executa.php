@@ -57,20 +57,20 @@ $tamanhos['20M'] = ['Hash'=>'66d8426057595b172e7a50be8ce65db7','Size'=>20000000]
 $tamanhos['25M'] = ['Hash'=>'8aa026b23a51940347335f5b22d0177b','Size'=>25000000];
 $tamanhos['30M'] = ['Hash'=>'1c0e814e642c5fd58a2ee3dcd8c9e807','Size'=>30000000];
 
-$solucoes ['Go-SergioCorreia_V2'] 	= ['exec'=>NULL,'language'=>'Go','creator'=>'Sérgio Correia','source'=>'https://github.com/OsProgramadores/op-desafios/blob/master/desafio-05/qrwteyrutiyoup/go'];
-$solucoes ['Go-SergioCorreia'] 	= ['exec'=>'./Go-SergioCorreia_V2','language'=>'Go','creator'=>'Sérgio Correia','source'=>'https://github.com/OsProgramadores/op-desafios/blob/master/desafio-05/qrwteyrutiyoup/go'];
-$solucoes ['Go-SergioCorreia_V3'] 	= ['exec'=>NULL,'language'=>'Go','creator'=>'Sérgio Correia','source'=>'https://github.com/OsProgramadores/op-desafios/blob/master/desafio-05/qrwteyrutiyoup/go'];
-$solucoes ['C-SergioCorreia']		= ['exec'=>'./C-SergioCorreia','language'=>'C','creator'=>'Sérgio Correia','source'=>'https://github.com/OsProgramadores/op-desafios/blob/master/desafio-05/qrwteyrutiyoup/c'];
-$solucoes ['Go-MarcoPaganini'] 	= ['exec'=>'./Go-MarcoPaganini','language'=>'Go','creator'=>'Marco Paganini','source'=>'https://github.com/OsProgramadores/op-desafios/tree/master/desafio-05/marcopaganini'];
-$solucoes ['Php-Bcampos']			= ['exec'=>'/usr/bin/php Php-Bcampos.php','language'=>'Php','creator'=>'Bernardino Campos','source'=>'https://github.com/BernardinoCampos/Desafio5/blob/master/Desafio5.php'];
-$solucoes ['Php-Bcampos-hhvm']		= ['exec'=>NULL,'language'=>'Php','creator'=>'Bernardino Campos','source'=>'https://github.com/BernardinoCampos/Desafio5/blob/master/Desafio5.php'];
-$solucoes ['Php-Bcampos_V2']		= ['exec'=>NULL,'language'=>'Php','creator'=>'Bernardino Campos','source'=>'https://github.com/BernardinoCampos/Desafio5/blob/master/Desafio5.php'];
-$solucoes ['Php-Mockba']			= ['exec'=>'/usr/bin/php Php-Mockba.php','language'=>'Php','creator'=>'Mockba - The Borg','source'=>'https://github.com/BernardinoCampos/Desafio5/blob/master/Desafio5_V4.php'];
-$solucoes ['Java-MarcoAntonio']	= ['exec'=>'/usr/bin/java -jar Java-MarcoAntonio.jar','language'=>'Java','creator'=>'Marco Antônio','source'=>'https://github.com/mrcrch/op-d05-java/tree/jsoniter2'];
-$solucoes ['Python-Demetrescu']	= ['exec'=>'/usr/bin/python3 Python-Demetrescu.py','language'=>'Python','creator'=>'Roger Demetrescu','source'=>'https://github.com/rdemetrescu/OsProgramadores/tree/master/desafio-5'];
-$solucoes ['Python-LuizLima'] 	= ['exec'=>'/usr/bin/python3 Python-LuizLima.py','language'=>'Python','creator'=>'Luiz Lima','source'=>''];
+$solucoes ['Go-SergioCorreia_V2'] = ['exec'=>NULL,'language'=>'Go','creator'=>'Sérgio Correia','source'=>'https://github.com/OsProgramadores/op-desafios/blob/master/desafio-05/qrwteyrutiyoup/go'];
+$solucoes ['Go-SergioCorreia'] 	  = ['exec'=>'./Go-SergioCorreia_V2','language'=>'Go','creator'=>'Sérgio Correia','source'=>'https://github.com/OsProgramadores/op-desafios/blob/master/desafio-05/qrwteyrutiyoup/go'];
+$solucoes ['Go-SergioCorreia_V3'] = ['exec'=>NULL,'language'=>'Go','creator'=>'Sérgio Correia','source'=>'https://github.com/OsProgramadores/op-desafios/blob/master/desafio-05/qrwteyrutiyoup/go'];
+$solucoes ['C-SergioCorreia']	  = ['exec'=>'./C-SergioCorreia','language'=>'C','creator'=>'Sérgio Correia','source'=>'https://github.com/OsProgramadores/op-desafios/blob/master/desafio-05/qrwteyrutiyoup/c'];
+$solucoes ['Go-MarcoPaganini'] 	  = ['exec'=>'./Go-MarcoPaganini','language'=>'Go','creator'=>'Marco Paganini','source'=>'https://github.com/OsProgramadores/op-desafios/tree/master/desafio-05/marcopaganini'];
+$solucoes ['Php-Bcampos']	  = ['exec'=>'/usr/bin/php Php-Bcampos.php','language'=>'Php','creator'=>'Bernardino Campos','source'=>'https://github.com/BernardinoCampos/Desafio5/blob/master/Desafio5.php'];
+$solucoes ['Php-Bcampos-hhvm']	  = ['exec'=>NULL,'language'=>'Php','creator'=>'Bernardino Campos','source'=>'https://github.com/BernardinoCampos/Desafio5/blob/master/Desafio5.php'];
+$solucoes ['Php-Bcampos_V2']	  = ['exec'=>NULL,'language'=>'Php','creator'=>'Bernardino Campos','source'=>'https://github.com/BernardinoCampos/Desafio5/blob/master/Desafio5.php'];
+$solucoes ['Php-Mockba']	  = ['exec'=>'/usr/bin/php Php-Mockba.php','language'=>'Php','creator'=>'Mockba - The Borg','source'=>'https://github.com/BernardinoCampos/Desafio5/blob/master/Desafio5_V4.php'];
+$solucoes ['Java-MarcoAntonio']	  = ['exec'=>'/usr/bin/java -jar Java-MarcoAntonio.jar','language'=>'Java','creator'=>'Marco Antônio','source'=>'https://github.com/mrcrch/op-d05-java/tree/jsoniter2'];
+$solucoes ['Python-Demetrescu']	  = ['exec'=>'/usr/bin/python3 Python-Demetrescu.py','language'=>'Python','creator'=>'Roger Demetrescu','source'=>'https://github.com/rdemetrescu/OsProgramadores/tree/master/desafio-5'];
+$solucoes ['Python-LuizLima'] 	  = ['exec'=>'/usr/bin/python3 Python-LuizLima.py','language'=>'Python','creator'=>'Luiz Lima','source'=>''];
 $solucoes ['Python-CarlosAugusto'] = ['exec'=>NULL,'language'=>'Python','creator'=>'Carlos Augusto','source'=>'https://github.com/engaugusto/desafio_5_python/blob/master/main.py'];
-$solucoes ['Rust-AndreGarzia'] 	= ['exec'=>'./Rust-AndreGarzia','language'=>'Rust','creator'=>'André Garzia','source'=>'https://bitbucket.org/andregarzia/desafio-5-rust'];
+$solucoes ['Rust-AndreGarzia'] 	  = ['exec'=>'./Rust-AndreGarzia','language'=>'Rust','creator'=>'André Garzia','source'=>'https://bitbucket.org/andregarzia/desafio-5-rust'];
 
 $numExecucoes = 10;
 #$numExecucoes = 5;
