@@ -121,8 +121,12 @@ foreach($arquivos as $key=>$arr)
 
 $aa=0;
 $first = true;
-foreach($firstNames as $nome)
+foreach($firstNames as $nome) {
+	if (strlen($nome)<1)
+		continue;
 	foreach ($lastNames as $sobrenome) {
+		if (strlen($sobrenome)<1)
+			continue;
 		if ($aa%13)
 			$funcionarios[$aa++] = ['id'=>$aa,'nome'=>$nome, 'sobrenome'=>$sobrenome, 'salario'=>number_format(mt_rand(100,10000000)/100,2,".",""), 'area'=>$areas[0]['codigo']];
 		else if (($aa+1)%13)
@@ -138,3 +142,4 @@ foreach($firstNames as $nome)
 			$funcionarios = [];
 		}
 	}
+}
