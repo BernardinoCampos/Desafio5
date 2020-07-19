@@ -1,5 +1,5 @@
 #!/usr/bin/php
-<?php
+<?
 
 $conf = json_decode(file_get_contents('./ftp.conf'),TRUE);
 
