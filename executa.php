@@ -146,7 +146,7 @@ if (IsSet($solucoes)) {
 
 				echo "OK - Tempo {$tempo}\n";
 
-				$fd = popen("cat /var/tmp/resultado | sed '/^$/d' |sed 's/| sort | md5sum", 'r');
+				$fd = popen("cat /var/tmp/resultado | sed '/^$/d' | sort | md5sum", 'r');
 	            fscanf($fd,"%s %s",$hash,$lixo);
 	            pclose($fd);
 
