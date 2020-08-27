@@ -133,13 +133,18 @@ if (IsSet($solucoes)) {
 
 				echo "Processando ($aa) $key [$tam] - ";
 				system('sync; echo 3 > /proc/sys/vm/drop_caches');
-				$cmd = "/usr/bin/cgexec -g memory:OsProgramadores ( cd {$vector['dir']}; {$vector['exec']} /OsProgramadores/HD/{$arquivo} )";
+				$cmd = "/usr/bin/cgexec -g memory:OsProgramadores {$vector['exec']} /OsProgramadores/HD/{$arquivo}";
 
+				$oldDir = getcwd();
+
+				chdir($vector['dir']);
 				$tempo = microtime(True);
 				$process = proc_open($cmd,$descriptorspec,$pipes,getcwd(),$vector['env']);
 				fclose($pipes[0]);
 				$resultado = proc_close($process);
 				$tempo = microtime(True)-$tempo;
+
+				chdir($oldDir);
 
 				if ($resultado!=0) {
 					echo "Falhou [{$resultado}]- Tempo {$tempo}\n";
