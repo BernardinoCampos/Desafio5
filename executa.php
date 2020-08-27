@@ -70,8 +70,8 @@ $tamanhos['30M'] = ['Hash'=>'1c0e814e642c5fd58a2ee3dcd8c9e807','Size'=>30000000]
 #$solucoes ['C#-Washington']			= ['exec'=>'dotnet Sources/C#-Washington/D5/bin/Release/netcoreapp2.0/D5.dll','env'=>['LANG'=>'en_US.UTF-8'], 'language'=>'C#','creator'=>'Washington Ramos','source'=>'', 'serious'=>TRUE];
 #$solucoes ['C++-Caloni']				= ['exec'=>'./Exec/C++-Caloni 16 ', 'env'=>['GOGC'=>'off'], 'language'=>'C++','creator'=>'Caloni','source'=>'https://github.com/OsProgramadores/op-desafios/blob/master/desafio-05/caloni/cpp', 'serious'=>TRUE];
 #$solucoes ['C++-EliasCorrea']			= ['exec'=>'./Exec/C++-Elias 16 ', 'env'=>['GOGC'=>'off'], 'language'=>'C++','creator'=>'Elias Correa','source'=>'https://github.com/OsProgramadores/op-desafios/tree/master/desafio-05/correaelias/cpp', 'serious'=>TRUE];
-#$solucoes ['C-CarlosAlves']			= ['exec'=>'./Exec/C-CarlosAlves','env'=>[], 'language'=>'C','creator'=>'Carlos Alves','source'=>'https://github.com/OsProgramadores/op-desafios/desafio-05/cbcalves/c', 'serious'=>TRUE];
-#$solucoes ['C-Kortkamp']				= ['exec'=>'./Exec/C-Kortkamp','env'=>[], 'language'=>'C','creator'=>'Marcelo Kortkamp','source'=>'https://github.com/OsProgramadores/op-desafios/desafio-05/kortkamp/c', 'serious'=>TRUE];
+$solucoes ['C-CarlosAlves']			= ['exec'=>'./Exec/C-CarlosAlves','env'=>[], 'language'=>'C','creator'=>'Carlos Alves','source'=>'https://github.com/OsProgramadores/op-desafios/tree/master/desafio-05/cbcalves/c', 'serious'=>TRUE];
+$solucoes ['C-Kortkamp']				= ['exec'=>'./Exec/C-Kortkamp','env'=>[], 'language'=>'C','creator'=>'Marcelo Kortkamp','source'=>'https://github.com/OsProgramadores/op-desafios/tree/master/desafio-05/kortkamp/c', 'serious'=>TRUE];
 #$solucoes ['C-SergioCorreia']			= ['exec'=>'./Exec/C-SergioCorreia','env'=>[], 'language'=>'C','creator'=>'Sérgio Correia','source'=>'https://github.com/OsProgramadores/op-desafios/blob/master/desafio-05/qrwteyrutiyoup/c', 'serious'=>TRUE];
 #$solucoes ['Go-SergioCorreia']			= ['exec'=>'./Exec/Go-SergioCorreia 8 ', 'env'=>['GOGC'=>'off'], 'language'=>'Go','creator'=>'Sérgio Correia','source'=>'https://github.com/OsProgramadores/op-desafios/blob/master/desafio-05/qrwteyrutiyoup/go', 'serious'=>TRUE];
 #$solucoes ['Java-MarcoAntonio']		= ['exec'=>'/usr/bin/java -jar Exec/Java-MarcoAntonio.jar','env'=>['LANG'=>'pt_BR.UTF-8'], 'language'=>'Java','creator'=>'Marco Antônio','source'=>'https://github.com/mrcrch/op-d05-java/tree/jsoniter2', 'serious'=>TRUE];
@@ -88,7 +88,7 @@ $tamanhos['30M'] = ['Hash'=>'1c0e814e642c5fd58a2ee3dcd8c9e807','Size'=>30000000]
 #$solucoes ['Python-MekyleiBelchior']	= ['exec'=>'/usr/bin/python3 Exec/Python-Mekylei-Belchior.py','env'=>['LC_ALL'=>'en_US.utf8'], 'language'=>'Python','creator'=>'Mekylei Belchior','source'=>'', 'serious'=>TRUE];
 #$solucoes ['Rust-AndreGarzia']			= ['exec'=>'./Exec/Rust-AndreGarzia','env'=>[], 'language'=>'Rust','creator'=>'André Garzia','source'=>'https://bitbucket.org/andregarzia/desafio-5-rust', 'serious'=>TRUE];
 #$solucoes ['Rust-Leovano']				= ['exec'=>'./Exec/Rust-Leovano2 8 ','env'=>[], 'language'=>'Rust','creator'=>'Leo Silva Souza','source'=>'https://github.com/leovano/op-desafios/tree/master/desafio-05/leovano/rust', 'serious'=>TRUE];
-$solucoes ['Scala-Lucena']				= ['exec'=>'/usr/bin/scala Exec/Scala-Lucena.jar','env'=>['LC_ALL'=>'en_US.utf8'], 'language'=>'Java','creator'=>'Leonardo Lucena','source'=>'', 'serious'=>TRUE];
+#$solucoes ['Scala-Lucena']				= ['exec'=>'/usr/bin/scala Exec/Scala-Lucena.jar','env'=>['LC_ALL'=>'en_US.utf8'], 'language'=>'Java','creator'=>'Leonardo Lucena','source'=>'', 'serious'=>TRUE];
 
 $numExecucoes = 5;
 
