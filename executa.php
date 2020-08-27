@@ -88,7 +88,7 @@ $tamanhos['30M'] = ['Hash'=>'1c0e814e642c5fd58a2ee3dcd8c9e807','Size'=>30000000]
 #$solucoes ['Python-MekyleiBelchior']	= ['exec'=>'/usr/bin/python3 Exec/Python-Mekylei-Belchior.py','env'=>['LC_ALL'=>'en_US.utf8'], 'language'=>'Python','creator'=>'Mekylei Belchior','source'=>'', 'serious'=>TRUE];
 #$solucoes ['Rust-AndreGarzia']			= ['exec'=>'./Exec/Rust-AndreGarzia','env'=>[], 'language'=>'Rust','creator'=>'André Garzia','source'=>'https://bitbucket.org/andregarzia/desafio-5-rust', 'serious'=>TRUE];
 #$solucoes ['Rust-Leovano']				= ['exec'=>'./Exec/Rust-Leovano2 8 ','env'=>[], 'language'=>'Rust','creator'=>'Leo Silva Souza','source'=>'https://github.com/leovano/op-desafios/tree/master/desafio-05/leovano/rust', 'serious'=>TRUE];
-$solucoes ['Scala-Lucena']				= ['exec'=>'/usr/bin/java -jar Exec/Scala-Lucena.jar','env'=>['LC_ALL'=>'en_US.utf8'], 'language'=>'Java','creator'=>'Leonardo Lucena','source'=>'', 'serious'=>TRUE];
+$solucoes ['Scala-Lucena']				= ['exec'=>'/usr/bin/scala Exec/Scala-Lucena.jar','env'=>['LC_ALL'=>'en_US.utf8'], 'language'=>'Java','creator'=>'Leonardo Lucena','source'=>'', 'serious'=>TRUE];
 
 $numExecucoes = 5;
 
