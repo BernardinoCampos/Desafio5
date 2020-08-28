@@ -19,6 +19,7 @@
 		}
 
 		header("Location: https://www.bcampos.com/Graphs.php");
+		exit;
 	}
 
 	function sortFunc($a, $b) {
