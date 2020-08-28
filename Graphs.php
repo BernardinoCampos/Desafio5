@@ -7,7 +7,7 @@
 	else
 		$solucao = key($solucoes);
 
-	if ($_GET['Action']='Resultado') {
+	if ($_GET['Action']=='Resultado') {
 		$size = intval($_GET['Size']);
 		if ($size==10 || $size==50 || $size==100 || $size==250 || $size==500) {
 			ob_end_clean();
