@@ -17,6 +17,8 @@
 			passthru("cat Resultado-{$size}K.txt");
 			exit;
 		}
+
+		header("Location: https://www.bcampos.com/Graphs.php");
 	}
 
 	function sortFunc($a, $b) {
