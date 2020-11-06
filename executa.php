@@ -93,6 +93,7 @@ $solucoes ['C-CarlosAlves-V3']			= ['dir'=>'/OsProgramadores', 'exec'=>'./Exec/C
 #$solucoes ['Rust-Leovano']				= ['dir'=>'/OsProgramadores', 'exec'=>'./Exec/Rust-Leovano2 8 ','env'=>[], 'language'=>'Rust','creator'=>'Leo Silva Souza','source'=>'https://github.com/leovano/op-desafios/tree/master/desafio-05/leovano/rust', 'serious'=>TRUE];
 #$solucoes ['Scala-Lucena']				= ['dir'=>'/OsProgramadores', 'exec'=>'/usr/bin/scala Exec/Scala-Lucena.jar','env'=>['LC_ALL'=>'en_US.utf8'], 'language'=>'Scala','creator'=>'Leonardo Lucena','source'=>'https://github.com/OsProgramadores/op-desafios/tree/master/desafio-05/lrlucena/scala', 'serious'=>TRUE];
 #$solucoes ['NodeJS-BrunoSana']			= ['dir'=>'/OsProgramadores', 'exec'=>'/usr/bin/node Exec/Js-BrunoSana.js','env'=>['LC_ALL'=>'en_US.utf8'], 'language'=>'JavaScript','creator'=>'Bruno Sana','source'=>'', 'serious'=>TRUE];
+$solucoes ['NodeJS-JuscelinoDJJ']		= ['dir'=>'/OsProgramadores', 'exec'=>'/usr/bin/node Exec/Js-JuscelinoDJJ.js','env'=>['LC_ALL'=>'en_US.utf8'], 'language'=>'JavaScript','creator'=>'Juscelino','source'=>'', 'serious'=>TRUE];
 
 $numExecucoes = 5;
 
