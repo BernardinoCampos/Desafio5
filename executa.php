@@ -141,6 +141,9 @@ if (IsSet($solucoes)) {
 
 				$oldDir = getcwd();
 
+				unlink ("/var/tmp/resultado");
+				unlink ("/var/tmp/lixo");
+
 				chdir($vector['dir']);
 				$tempo = microtime(True);
 				$process = proc_open($cmd,$descriptorspec,$pipes,getcwd(),$vector['env']);
