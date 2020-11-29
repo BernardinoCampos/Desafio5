@@ -95,7 +95,7 @@ $tamanhos['30M'] = ['Hash'=>'1c0e814e642c5fd58a2ee3dcd8c9e807','Size'=>30000000]
 #$solucoes ['NodeJS-BrunoSana']			= ['dir'=>'/OsProgramadores', 'exec'=>'/usr/bin/node Exec/Js-BrunoSana.js','env'=>['LC_ALL'=>'en_US.utf8'], 'language'=>'JavaScript','creator'=>'Bruno Sana','source'=>'', 'serious'=>TRUE];
 #$solucoes ['NodeJS-JuscelinoDJJ']		= ['dir'=>'/OsProgramadores', 'exec'=>'/usr/bin/node --expose_gc --max-old-space-size=16384 Exec/Js-JuscelinoDJJ.js','env'=>['LC_ALL'=>'en_US.utf8'], 'language'=>'JavaScript','creator'=>'Juscelino Júnior','source'=>'https://github.com/OsProgramadores/op-desafios/tree/master/desafio-05/juscelinodjj/javascript', 'serious'=>TRUE];
 #$solucoes ['NodeJS-JuscelinoDJJ-2']		= ['dir'=>'/OsProgramadores', 'exec'=>'/usr/bin/node --max-old-space-size=16384 Exec/Js-JuscelinoDJJ-2.js','env'=>['LC_ALL'=>'en_US.utf8'], 'language'=>'JavaScript','creator'=>'Juscelino Júnior','source'=>'https://github.com/OsProgramadores/op-desafios/tree/master/desafio-05/juscelinodjj/javascript', 'serious'=>TRUE];
-$solucoes ['LiquidHaskel-RenanRoberto']		= ['dir'=>'/OsProgramadores/Sources/LiquidHaskel-RenanRoberto', 'exec'=>'/usr/local/bin/stack run liquid-haskell.cabal ','env'=>['LC_ALL'=>'en_US.utf8'], 'language'=>'LiquidHaskel','creator'=>'Renan Roberto','source'=>'', 'serious'=>TRUE];
+$solucoes ['LiquidHaskel-RenanRoberto']		= ['dir'=>'/OsProgramadores/Sources/LiquidHaskel-RenanRoberto', 'exec'=>'/usr/local/bin/stack run liquid-haskell.cabal ','env'=>['LC_ALL'=>'en_US.utf8', 'HOME'=>'/root'], 'language'=>'LiquidHaskel','creator'=>'Renan Roberto','source'=>'', 'serious'=>TRUE];
 
 $numExecucoes = 5;
 
