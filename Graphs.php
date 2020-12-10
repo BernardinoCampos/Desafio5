@@ -39,6 +39,22 @@
 		return ( ($item1>$item2)?1:-1 );
 	}
 
+	function sortLang($a, $b) {
+		$item1 = (float)($a[Time]/$a['Num']);
+		$item2 = (float)($b[Time]/$b['Num']);
+
+		if ($item1==$item2)
+			return 0;
+
+		if ($item1==0)
+			return 1;
+
+		if ($item2==0)
+			return 1;
+
+		return ( ($item1>$item2)?1:-1 );
+	}
+
 	uksort($solucoes,'sortFunc');
 
 	$lang = [];
@@ -49,6 +65,8 @@
 			@$lang[$sol['language']]['Num']++;
 		}
 	}
+
+	uksort($lang,'sortLang');
 
 
 ?>
@@ -103,12 +121,13 @@
 						<div class="col-lg-6">
 							<table class="table">
 								<thead  class="thead-dark">
-								<tr><th class='text-center'>Linguagem</th><th>Média para 30M</th></tr>
+								<tr><th class='text-center'>Linguagem</th><th>Versões</th><th>Média para 30M</th></tr>
 								</thead>
 								<tbody>
 								<?foreach ($lang as $k=>$l) : ?>
 									<tr>
 										<td><?=$k?></td>
+										<td>$l['Num']</td>
 										<td class='text-right'><?=number_format(((float)$l['Time']/(float)$l['Num']),2)?>s</td>
 									</tr>
 								<?endforeach;?>
