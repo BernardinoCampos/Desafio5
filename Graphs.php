@@ -40,8 +40,8 @@
 	}
 
 	function sortLang($a, $b) {
-		$item1 = (float)($a[Time]/$a['Num']);
-		$item2 = (float)($b[Time]/$b['Num']);
+		$item1 = (float)($a['Time']/$a['Num']);
+		$item2 = (float)($b['Time']/$b['Num']);
 
 		if ($item1==$item2)
 			return 0;
