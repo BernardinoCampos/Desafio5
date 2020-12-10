@@ -66,7 +66,7 @@
 		}
 	}
 
-	uksort($lang,'sortLang');
+	uasort($lang,'sortLang');
 
 
 ?>
