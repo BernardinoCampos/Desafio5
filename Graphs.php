@@ -40,6 +40,17 @@
 	}
 
 	uksort($solucoes,'sortFunc');
+
+	$lang = [];
+
+	foreach ($solucoes as $key=>$sol) {
+		if ($resultados[$key]['30M']['media']!=0) {
+			@$lang[$sol['language']]['Time'] += $resultados[$key]['30M']['media'];
+			@$lang[$sol['language']]['Num'] += $resultados[$key]['30M']['media'];
+		}
+	}
+
+
 ?>
 <html>
 	<head>
@@ -86,6 +97,27 @@
 				<div class="col-lg-3">
 				</div>
 			</div>
+					<div class="row mt-5 mb-5">
+						<div class="col-lg-3">
+						</div>
+						<div class="col-lg-6">
+							<table class="table">
+								<thead  class="thead-dark">
+								<tr><th class='text-center'>Linguagem</th><th>Média para 30M</th></tr>
+								</thead>
+								<tbody>
+								<?foreach ($lang as $k=>$l) : ?>
+									<tr>
+										<td><?=$k?></td>
+										<td class='text-right'><?=number_format($l['Time']/$l['Num'],2)?>s</td>
+									</tr>
+								<?endforeach;?>
+								</tbody>
+							</table>
+						</div>
+						<div class="col-lg-3">
+						</div>
+					</div>
 			<div class="row mt-5 mb-5">
 				<div class="col-lg-3">
 				</div>
