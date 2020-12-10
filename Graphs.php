@@ -127,7 +127,7 @@
 								<?foreach ($lang as $k=>$l) : ?>
 									<tr>
 										<td><?=$k?></td>
-										<td>$l['Num']</td>
+										<td><?=$l['Num']?></td>
 										<td class='text-right'><?=number_format(((float)$l['Time']/(float)$l['Num']),2)?>s</td>
 									</tr>
 								<?endforeach;?>
