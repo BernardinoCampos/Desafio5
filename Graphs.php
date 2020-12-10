@@ -115,28 +115,28 @@
 				<div class="col-lg-3">
 				</div>
 			</div>
-					<div class="row mt-5 mb-5">
-						<div class="col-lg-3">
-						</div>
-						<div class="col-lg-6">
-							<table class="table">
-								<thead  class="thead-dark">
-								<tr><th class='text-center'>Linguagem</th><th>Versões</th><th>Média para 30M</th></tr>
-								</thead>
-								<tbody>
-								<?foreach ($lang as $k=>$l) : ?>
-									<tr>
-										<td><?=$k?></td>
-										<td><?=$l['Num']?></td>
-										<td class='text-right'><?=number_format(((float)$l['Time']/(float)$l['Num']),2)?>s</td>
-									</tr>
-								<?endforeach;?>
-								</tbody>
-							</table>
-						</div>
-						<div class="col-lg-3">
-						</div>
-					</div>
+			<div class="row mt-5 mb-5">
+				<div class="col-lg-4">
+				</div>
+				<div class="col-lg-4">
+					<table class="table">
+						<thead  class="thead-dark">
+						<tr><th class='text-center'>Linguagem</th><th class='text-right'>Versões</th><th class='text-right'>Média para 30M</th></tr>
+						</thead>
+						<tbody>
+						<?foreach ($lang as $k=>$l) : ?>
+							<tr>
+								<td class='text-center'><?=$k?></td>
+								<td class='text-right'><?=$l['Num']?></td>
+								<td class='text-right'><?=number_format(((float)$l['Time']/(float)$l['Num']),2)?>s</td>
+							</tr>
+						<?endforeach;?>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-lg-4">
+				</div>
+			</div>
 			<div class="row mt-5 mb-5">
 				<div class="col-lg-3">
 				</div>
