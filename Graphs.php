@@ -45,8 +45,8 @@
 
 	foreach ($solucoes as $key=>$sol) {
 		if ($resultados[$key]['30M']['media']!=0) {
-			@$lang[$sol['language']]['Time'] += $resultados[$key]['30M']['media'];
-			@$lang[$sol['language']]['Num'] += $resultados[$key]['30M']['media'];
+			@$lang[$sol['language']]['Time'] += (float)$resultados[$key]['30M']['media'];
+			@$lang[$sol['language']]['Num']++;
 		}
 	}
 
@@ -109,7 +109,7 @@
 								<?foreach ($lang as $k=>$l) : ?>
 									<tr>
 										<td><?=$k?></td>
-										<td class='text-right'><?=number_format($l['Time']/$l['Num'],2)?>s</td>
+										<td class='text-right'><?=number_format(((float)$l['Time']/(float)$l['Num']),2)?>s</td>
 									</tr>
 								<?endforeach;?>
 								</tbody>
