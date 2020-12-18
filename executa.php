@@ -92,6 +92,7 @@ $solucoes ['C++-JonathasValeriano']		= ['dir'=>'/OsProgramadores', 'exec'=>'./Ex
 #$solucoes ['Python-MekyleiBelchior']	= ['dir'=>'/OsProgramadores', 'exec'=>'/usr/bin/python3 Exec/Python-Mekylei-Belchior.py','env'=>['LC_ALL'=>'en_US.utf8'], 'language'=>'Python','creator'=>'Mekylei Belchior','source'=>'', 'serious'=>TRUE];
 #$solucoes ['Rust-AndreGarzia']			= ['dir'=>'/OsProgramadores', 'exec'=>'./Exec/Rust-AndreGarzia','env'=>[], 'language'=>'Rust','creator'=>'André Garzia','source'=>'https://bitbucket.org/andregarzia/desafio-5-rust', 'serious'=>TRUE];
 #$solucoes ['Rust-Leovano']				= ['dir'=>'/OsProgramadores', 'exec'=>'./Exec/Rust-Leovano2 8 ','env'=>[], 'language'=>'Rust','creator'=>'Leo Silva Souza','source'=>'https://github.com/leovano/op-desafios/tree/master/desafio-05/leovano/rust', 'serious'=>TRUE];
+$solucoes ['Rust-Leovano2']				= ['dir'=>'/OsProgramadores', 'exec'=>'./Exec/Rust-Leovano-2 8 ','env'=>[], 'language'=>'Rust','creator'=>'Leo Silva Souza','source'=>'https://github.com/leovano/op-desafios/tree/master/desafio-05/leovano/rust', 'serious'=>FALSE];
 #$solucoes ['Scala-Lucena']				= ['dir'=>'/OsProgramadores', 'exec'=>'/usr/bin/scala Exec/Scala-Lucena.jar','env'=>['LC_ALL'=>'en_US.utf8'], 'language'=>'Scala','creator'=>'Leonardo Lucena','source'=>'https://github.com/OsProgramadores/op-desafios/tree/master/desafio-05/lrlucena/scala', 'serious'=>TRUE];
 #$solucoes ['NodeJS-BrunoSana']			= ['dir'=>'/OsProgramadores', 'exec'=>'/usr/bin/node Exec/Js-BrunoSana.js','env'=>['LC_ALL'=>'en_US.utf8'], 'language'=>'JavaScript','creator'=>'Bruno Sana','source'=>'', 'serious'=>TRUE];
 #$solucoes ['NodeJS-JuscelinoDJJ']		= ['dir'=>'/OsProgramadores', 'exec'=>'/usr/bin/node --expose_gc --max-old-space-size=16384 Exec/Js-JuscelinoDJJ.js','env'=>['LC_ALL'=>'en_US.utf8'], 'language'=>'JavaScript','creator'=>'Juscelino Júnior','source'=>'https://github.com/OsProgramadores/op-desafios/tree/master/desafio-05/juscelinodjj/javascript', 'serious'=>TRUE];
@@ -183,7 +184,8 @@ if (IsSet($solucoes)) {
 	 }
 	 foreach($tempos as $solucao=>$a)
 	 	foreach($a as $tam=>$b)
-	 		$resultados[$solucao][$tam]=['media'=>array_sum($b)/Count($b), 'stdDev'=>stddev($b), 'stdError'=>(stddev($b)/sqrt(Count($b))), 'tempos'=>$b, 'Size'=>$tamanhos[$tam]['Size']];
+	 		if ($solucao['serious'])
+		 		$resultados[$solucao][$tam]=['media'=>array_sum($b)/Count($b), 'stdDev'=>stddev($b), 'stdError'=>(stddev($b)/sqrt(Count($b))), 'tempos'=>$b, 'Size'=>$tamanhos[$tam]['Size']];
 }
 
 foreach (getFtpArray('solucoes.json') as $key=>$sol)
