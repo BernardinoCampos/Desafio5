@@ -7,6 +7,10 @@
 	else
 		$solucao = key($solucoes);
 
+	foreach($solucoes as $key=>$value)
+		if (!$value['serious'])
+			unset($solucoes[$key]);
+
 	if ($_GET['Action']=='Resultado') {
 		$size = intval($_GET['Size']);
 		if ($size==10 || $size==50 || $size==100 || $size==250 || $size==500) {
