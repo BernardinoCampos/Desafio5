@@ -5,6 +5,8 @@
 	foreach ($solucoes as $key=>$solution)
 		echo "<!--- {$key} --->\n";
 
+	echo "\n<BR><BR>\n\n";
+
 	if (filter_input(INPUT_POST, 'action', FILTER_SANITIZE_SPECIAL_CHARS)=='processa')
 		$solucao = filter_input(INPUT_POST, 'solucao', FILTER_SANITIZE_SPECIAL_CHARS);
 	else
@@ -13,6 +15,9 @@
 	foreach($solucoes as $key=>$value)
 		if (!$value['serious'])
 			unset($solucoes[$key]);
+
+	foreach ($solucoes as $key=>$solution)
+		echo "<!--- {$key} --->\n";
 
 	if ($_GET['Action']=='Resultado') {
 		$size = intval($_GET['Size']);
