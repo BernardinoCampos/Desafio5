@@ -96,7 +96,11 @@
 						</thead>
 						<tbody>
 							<?foreach ($solucoes as $key=>$solution) : ?>
-								<tr class="text-danger">
+								<? if ($key=='LIMITE'): ?>
+									<tr>
+								<? else: ?>
+									<tr  class="text-danger">
+								<? endif; ?>
 									<td><?=$key?></td>
 									<td class='text-center'><?=$solution['language']?></td>
 									<td class='text-center'><?=$solution['creator']?></td>
