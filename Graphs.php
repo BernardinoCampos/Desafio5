@@ -96,7 +96,7 @@
 						</thead>
 						<tbody>
 							<?foreach ($solucoes as $key=>$solution) : ?>
-								<tr>
+								<tr class="text-danger">
 									<td><?=$key?></td>
 									<td class='text-center'><?=$solution['language']?></td>
 									<td class='text-center'><?=$solution['creator']?></td>
