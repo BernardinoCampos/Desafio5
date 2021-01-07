@@ -200,7 +200,7 @@ foreach ($solucoes as $key=>$sol){
 	}
 }
 
-$solucoes['LIMITE'] = ['exec'=>'','language'=>'LIMITE','creator'=>'Admin','source'=>''];
+$solucoes['LIMITE'] = ['dir'=>'','exec'=>'','env'=>'','language'=>'LIMITE','creator'=>'Admin','source'=>'','serious'=>true];
 $resultados['LIMITE'] = $resultados["Php8-Bcampos"];
 
 foreach ($resultados['LIMITE'] as $key=>$value) {
