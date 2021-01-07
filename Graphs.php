@@ -96,7 +96,7 @@
 						</thead>
 						<tbody>
 							<?foreach ($solucoes as $key=>$solution) : ?>
-								<? if ($key=='LIMITE'): ?>
+								<? if ($key!='LIMITE'): ?>
 									<tr>
 								<? else: ?>
 									<tr  class="text-danger">
