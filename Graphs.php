@@ -2,6 +2,9 @@
 	$solucoes = json_decode(file_get_contents("./conf/solucoes.json"),true);
 	$resultados = json_decode(file_get_contents("./conf/resultados.json"),true);
 
+	foreach ($solucoes as $key=>$solution)
+		echo "<!--- {$key} --->\n";
+
 	if (filter_input(INPUT_POST, 'action', FILTER_SANITIZE_SPECIAL_CHARS)=='processa')
 		$solucao = filter_input(INPUT_POST, 'solucao', FILTER_SANITIZE_SPECIAL_CHARS);
 	else
@@ -71,9 +74,6 @@
 	}
 
 	uasort($lang,'sortLang');
-
-foreach ($solucoes as $key=>$solution)
-	echo "<!--- {$key} --->\n";
 
 ?>
 <html>
