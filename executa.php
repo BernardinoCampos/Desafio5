@@ -194,6 +194,8 @@ foreach (getFtpArray('solucoes.json') as $key=>$sol)
 		$solucoes[$key] = $sol;
 
 foreach ($solucoes as $key=>$sol){
+	if (!IsSet($sol['serious']))
+		$solucoes[$key]['serious'] = true;
 	if ($sol['exec']===NULL) {
 		unset($solucoes[$key]);
 		unset($resultados[$key]);
