@@ -72,6 +72,8 @@
 
 	uasort($lang,'sortLang');
 
+foreach ($solucoes as $key=>$solution)
+	echo "<!--- {$key} --->\n";
 
 ?>
 <html>
