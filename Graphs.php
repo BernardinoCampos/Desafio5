@@ -195,7 +195,8 @@
 				<div>
 			</div>
 		</div>
-		<script src="/echarts.min.js"></script>
+		<!-- <script src="/echarts.min.js"></script> -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.1.2/echarts.min.js"></script>
 		<script type="text/javascript">
 			var myChart1 = echarts.init(document.getElementById('Graph1'));
 
