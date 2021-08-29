@@ -29,7 +29,7 @@ function getFtpArray(string $nome) : array {
 
 	$fd = ftp_connect($conf['host']);
 	$lg = ftp_login($fd, $conf['user'], $conf['passwd']);
-	ftp_pasv($fd, false	);
+	ftp_pasv($fd, true	);
 	ftp_get($fd, $filename, "/conf/{$nome}", FTP_BINARY);
 	ftp_close($fd);
 
