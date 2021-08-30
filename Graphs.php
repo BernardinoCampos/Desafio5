@@ -153,7 +153,7 @@
 							<tr>
 								<td class='text-center'><?=$k?></td>
 								<td class='text-right'><?=$l['Num']?></td>
-								<td class='text-right'><?=number_format(((float)$l['Time']/(float)$l['Num']),2)?>s</td>
+								<td class='text-right'><?=formataSegundos(((float)$l['Time']/(float)$l['Num']))?></td>
 							</tr>
 						<?endforeach;?>
 						</tbody>
