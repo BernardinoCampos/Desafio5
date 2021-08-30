@@ -2,6 +2,24 @@
 	$solucoes = json_decode(file_get_contents("./conf/solucoes.json"),true);
 	$resultados = json_decode(file_get_contents("./conf/resultados.json"),true);
 
+	function formataSegundos($seg) {
+		$locale_info = localeconv();
+
+		if (Is_Float($seg))
+			$msec = sprintf("%s%03d", $locale_info['decimal_point'], floor(($seg - floor($seg)) * 1000));
+		else
+			$msec = "";
+
+		if ($seg<1)
+			return (sprintf("%.1f ms", $seg*1000));
+		else if ($seg < 60)
+			return (sprintf("%2d%s s", $seg % 60, $msec));
+		else if ($seg > 60 && $seg < (60 * 60))
+			return (sprintf("%2d:%02d", floor($seg / 60), $seg % 60));
+		else if ($seg > (60 * 60))
+			return (sprintf("%2d:%02d:%02d", floor($seg / (60 * 60)), (floor($seg / 60) % 60), $seg % 60));
+	}
+
 	if (filter_input(INPUT_POST, 'action', FILTER_SANITIZE_SPECIAL_CHARS)=='processa')
 		$solucao = filter_input(INPUT_POST, 'solucao', FILTER_SANITIZE_SPECIAL_CHARS);
 	else
@@ -110,7 +128,7 @@
 										<td> - </td>
 									<? endif; ?>
 									<? if ($resultados[$key]['30M']['media']!=0) : ?>
-										<td class='text-right'><?=number_format($resultados[$key]['30M']['media'],2)?>s</td>
+										<td class='text-right'><?=formataSegundos($resultados[$key]['30M']['media'])?></td>
 									<? else : ?>
 										<td class='text-right'> - </td>
 									<? endif; ?>
