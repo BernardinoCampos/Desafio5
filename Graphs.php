@@ -191,7 +191,7 @@
 				<div class="col-lg-3">
 				</div>
 			</div>
-			<form action='/Graphs.php' method="post">
+			<form action='#intervalo' method="post">
 				<input type='hidden' name='action' value='processa'>
 				<div class='row'>
 					<div class="col-lg-5">
@@ -207,6 +207,7 @@
 					</div>
 				</div>
 			</form>
+			<a id="intervalo"></a>
 			<div class="row">
 				<div class="col-lg-12">
 					<div id="Graph2" style="height:700px; width: 80%; margin:0 auto;"></div>
