@@ -168,24 +168,24 @@
 				<div class="col-lg-6">
 					<table class="table">
 						<thead class="thead-dark">
-							<tr><th>Arquivos de Teste</th><th>MD5 Resultado</th><th>Arquivo Resultado</th></tr>
+							<tr><th class='text-center'>Arquivos de Teste</th><th class='text-center'>MD5 Resultado</th><th class='text-center'>Arquivo Resultado</th></tr>
 						</thead>
 						<tbody>
-						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-10K.json.7z'>10K Registros</a></td><td>967eb7059d62e6d430d67eeb16e45e44</td>  <td><a href='http://www.bcampos.com/Graphs.php?Action=Resultado&Size=10'>Resultado 10K</a></td></tr>
-						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-50K.json.7z'>50K Registros</a></td><td>1c25b8e3d52ff9ae5ec9883570c49d59</td>  <td><a href='http://www.bcampos.com/Graphs.php?Action=Resultado&Size=50'>Resultado 50K</a></td></tr>
-						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-100K.json.7z'>100K Registros</a></td><td>fc4caf6d53d265453d62da0983bb3fb5</td><td><a href='http://www.bcampos.com/Graphs.php?Action=Resultado&Size=100'>Resultado 100K</a></td></tr>
-						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-250K.json.7z'>250K Registros</a></td><td>6e41f0316ee66d9266c1e5d32891b3bf</td><td><a href='http://www.bcampos.com/Graphs.php?Action=Resultado&Size=250'>Resultado 250K</a></td></tr>
-						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-500K.json.7z'>500K Registros</a></td><td>98fecdfd321a5cd966eefbb9f8b31785</td><td><a href='http://www.bcampos.com/Graphs.php?Action=Resultado&Size=500'>Resultado 500K</a></td></tr>
-						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-1M.json.7z'>1M Registros</a></td><td>b9012db943149e069920bf7c3ec49984</td>    <td>&nbsp;</td></tr>
-						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-2M.json.7z'>2M Registros</a></td><td>483cc5423f6502a84c4ec9adc0ce8cbb</td>    <td>&nbsp;</td></tr>
-						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-3M.json.7z'>3M Registros</a></td><td>93912b5d0ffeccc86db7d596f0078115</td>    <td>&nbsp;</td></tr>
-						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-5M.json.7z'>5M Registros</a></td><td>92d5d4b4dd1bf5c965f79053145ae0f2</td>    <td>&nbsp;</td></tr>
-						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-8M.json.7z'>8M Registros</a></td><td>50801387d4d06ed42043ca2325a01122</td>    <td>&nbsp;</td></tr>
-						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-12M.json.7z'>12M Registros</a></td><td>cddb5d244bca76b71e5ee7db95e022e8</td>  <td>&nbsp;</td></tr>
-						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-15M.json.7z'>15M Registros</a></td><td>acd7306f4ef82721bc301f488dd59d60</td>  <td>&nbsp;</td></tr>
-						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-20M.json.7z'>20M Registros</a></td><td>66d8426057595b172e7a50be8ce65db7</td>  <td>&nbsp;</td></tr>
-						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-25M.json.7z'>25M Registros</a></td><td>8aa026b23a51940347335f5b22d0177b</td>  <td>&nbsp;</td></tr>
-						<tr><td align='center'><a href='http://www.bcampos.com/Funcionarios-30M.json.7z'>30M Registros</a></td><td>1c0e814e642c5fd58a2ee3dcd8c9e807</td>  <td>&nbsp;</td></tr>
+						<tr><td class='text-center'><a href='http://www.bcampos.com/Funcionarios-10K.json.7z'>10K Registros</a></td><td class='text-center'>967eb7059d62e6d430d67eeb16e45e44</td>  <td class='text-center'><a href='http://www.bcampos.com/Graphs.php?Action=Resultado&Size=10'>Resultado 10K</a></td></tr>
+						<tr><td class='text-center'><a href='http://www.bcampos.com/Funcionarios-50K.json.7z'>50K Registros</a></td><td class='text-center'>1c25b8e3d52ff9ae5ec9883570c49d59</td>  <td class='text-center'><a href='http://www.bcampos.com/Graphs.php?Action=Resultado&Size=50'>Resultado 50K</a></td></tr>
+						<tr><td class='text-center'><a href='http://www.bcampos.com/Funcionarios-100K.json.7z'>100K Registros</a></td><td class='text-center'>fc4caf6d53d265453d62da0983bb3fb5</td><td class='text-center'><a href='http://www.bcampos.com/Graphs.php?Action=Resultado&Size=100'>Resultado 100K</a></td></tr>
+						<tr><td class='text-center'><a href='http://www.bcampos.com/Funcionarios-250K.json.7z'>250K Registros</a></td><td class='text-center'>6e41f0316ee66d9266c1e5d32891b3bf</td><td class='text-center'><a href='http://www.bcampos.com/Graphs.php?Action=Resultado&Size=250'>Resultado 250K</a></td></tr>
+						<tr><td class='text-center'><a href='http://www.bcampos.com/Funcionarios-500K.json.7z'>500K Registros</a></td><td class='text-center'>98fecdfd321a5cd966eefbb9f8b31785</td><td class='text-center'><a href='http://www.bcampos.com/Graphs.php?Action=Resultado&Size=500'>Resultado 500K</a></td></tr>
+						<tr><td class='text-center'><a href='http://www.bcampos.com/Funcionarios-1M.json.7z'>1M Registros</a></td><td class='text-center'>b9012db943149e069920bf7c3ec49984</td>    <td class='text-center'>&nbsp;</td></tr>
+						<tr><td class='text-center'><a href='http://www.bcampos.com/Funcionarios-2M.json.7z'>2M Registros</a></td><td class='text-center'>483cc5423f6502a84c4ec9adc0ce8cbb</td>    <td class='text-center'>&nbsp;</td></tr>
+						<tr><td class='text-center'><a href='http://www.bcampos.com/Funcionarios-3M.json.7z'>3M Registros</a></td><td class='text-center'>93912b5d0ffeccc86db7d596f0078115</td>    <td class='text-center'>&nbsp;</td></tr>
+						<tr><td class='text-center'><a href='http://www.bcampos.com/Funcionarios-5M.json.7z'>5M Registros</a></td><td class='text-center'>92d5d4b4dd1bf5c965f79053145ae0f2</td>    <td class='text-center'>&nbsp;</td></tr>
+						<tr><td class='text-center'><a href='http://www.bcampos.com/Funcionarios-8M.json.7z'>8M Registros</a></td><td class='text-center'>50801387d4d06ed42043ca2325a01122</td>    <td class='text-center'>&nbsp;</td></tr>
+						<tr><td class='text-center'><a href='http://www.bcampos.com/Funcionarios-12M.json.7z'>12M Registros</a></td><td class='text-center'>cddb5d244bca76b71e5ee7db95e022e8</td>  <td class='text-center'>&nbsp;</td></tr>
+						<tr><td class='text-center'><a href='http://www.bcampos.com/Funcionarios-15M.json.7z'>15M Registros</a></td><td class='text-center'>acd7306f4ef82721bc301f488dd59d60</td>  <td class='text-center'>&nbsp;</td></tr>
+						<tr><td class='text-center'><a href='http://www.bcampos.com/Funcionarios-20M.json.7z'>20M Registros</a></td><td class='text-center'>66d8426057595b172e7a50be8ce65db7</td>  <td class='text-center'>&nbsp;</td></tr>
+						<tr><td class='text-center'><a href='http://www.bcampos.com/Funcionarios-25M.json.7z'>25M Registros</a></td><td class='text-center'>8aa026b23a51940347335f5b22d0177b</td>  <td class='text-center'>&nbsp;</td></tr>
+						<tr><td class='text-center'><a href='http://www.bcampos.com/Funcionarios-30M.json.7z'>30M Registros</a></td><td class='text-center'>1c0e814e642c5fd58a2ee3dcd8c9e807</td>  <td class='text-center'>&nbsp;</td></tr>
 					</table>
 				</div>
 				<div class="col-lg-3">
