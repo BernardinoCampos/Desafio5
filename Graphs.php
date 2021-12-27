@@ -110,7 +110,7 @@
 				<div class="col-lg-6">
 					<table class="table">
 						<thead  class="thead-dark">
-							<tr><th>Solução</th><th class='text-center'>Linguagem</th><th class='text-center'>Criador</th><th>Source</th><th>Média para 30M</th></tr>
+							<tr><th>Solução</th><th class='text-center'>Linguagem</th><th class='text-center'>Criador</th><th class='text-center'>Source</th><th class='text-right'>Média para 30M</th></tr>
 						</thead>
 						<tbody>
 							<?foreach ($solucoes as $key=>$solution) : ?>
@@ -123,9 +123,9 @@
 									<td class='text-center'><?=$solution['language']?></td>
 									<td class='text-center'><?=$solution['creator']?></td>
 									<? if (IsSet($solution['source'])) : ?>
-										<td><a href='<?=$solution['source']?>'>Source</a></td>
+										<td class='text-center'><a href='<?=$solution['source']?>'>Source</a></td>
 									<? else : ?>
-										<td> - </td>
+										<td class='text-center'> - </td>
 									<? endif; ?>
 									<? if ($resultados[$key]['30M']['media']!=0) : ?>
 										<td class='text-right'><?=formataSegundos($resultados[$key]['30M']['media'])?></td>
